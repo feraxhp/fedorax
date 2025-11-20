@@ -70,9 +70,13 @@ if [[ -d /home/$USER_NAME/.fx ]]; then
 else
     sudo -u "$USER_NAME" git clone https://github.com/feraxcf/.fx /home/$USER_NAME/.fx
     
-    sudo -u "$USER_NAME" mkdir -p /home/$USER_NAME/{.config,projects}/
-    sudo -u "$USER_NAME" ln -s /home/$USER_NAME/.config/girep /data/girep
-    sudo -u "$USER_NAME" ln -s /home/$USER_NAME/projects /data/cprojects
+    sudo -u "$USER_NAME" mkdir -p /home/$USER_NAME/.config/
+    
+    chown -R "$USER_NAME:$USER_NAME" /data/cprojects
+    chown -R "$USER_NAME:$USER_NAME" /data/girep
+    
+    sudo -u "$USER_NAME" ln -s /data/girep /home/$USER_NAME/.config/girep
+    sudo -u "$USER_NAME" ln -s /data/cprojects /home/$USER_NAME/projects
     
     sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash
 fi
