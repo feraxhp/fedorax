@@ -10,6 +10,8 @@ RUN curl -sS https://starship.rs/install.sh -o /tmp/st.sh && \
     /tmp/st.sh --yes && \
     rm -f /tmp/st.sh
 
+RUN mkdir -p /data/{cprojects,girep}
+
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 

@@ -34,6 +34,8 @@ else
     echo "👋  El usuario $USER_NAME ya existe."
 fi
 
+
+
 # ------------------------------------------------------------------
 # 2️⃣ Configuramos OpenSSH
 # ------------------------------------------------------------------
@@ -63,15 +65,17 @@ fi
 # ------------------------------------------------------------------
 echo "🔧  Descargando .fx ..."
 # Si quieres que el clon se haga como el usuario creado:
-sudo -u "$USER_NAME" git clone https://github.com/feraxcf/.fx /home/$USER_NAME/.fx
-sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash
-
-# Crear directorios de configuración
-mkdir -p /home/$USER_NAME/.config/girep/
-mkdir -p /data/{cprojects,girep}
-
-lk -s /data/cprojects /home/$USER_NAME/projects
-lk -s /data/girep /home/$USER_NAME/.config/girep/ 
+if [[ -d /home/$USER_NAME/.fx ]]; then
+    echo "El directorio (.fx) ya existe"
+else
+    sudo -u "$USER_NAME" git clone https://github.com/feraxcf/.fx /home/$USER_NAME/.fx
+    
+    sudo -u "$USER_NAME" mkdir -p /home/$USER_NAME/{.config,projects}/
+    sudo -u "$USER_NAME" ln -s /home/$USER_NAME/.config/girep /data/girep
+    sudo -u "$USER_NAME" ln -s /home/$USER_NAME/projects /data/cprojects
+    
+    sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash
+fi
 
 # ------------------------------------------------------------------
 # 3️⃣ Iniciamos sshd en segundo plano
