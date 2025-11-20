@@ -1,5 +1,8 @@
 # Fedorax
 
+
+[![Build & Publish Container](https://github.com/feraxhp/fedorax/actions/workflows/docker.yml/badge.svg)](https://github.com/feraxhp/fedorax/actions/workflows/docker.yml)
+
 is just a simple image base on fedora linux, ready to be used as development platform.
 It is meant to be use in conjuction with zed.
 
