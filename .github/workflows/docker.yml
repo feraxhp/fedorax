@@ -5,13 +5,13 @@ on:
     tags:
       - 'v*.*.*'
 
-permissions:
-  packages: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -36,5 +36,5 @@ jobs:
           context: .
           push: true
           tags: |
-            feraxhp/fedorax:${{ steps.vars.outputs.VERSION }}
-            feraxhp/fedorax:latest
+            ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.VERSION }}
+            ghcr.io/${{ github.repository }}:latest
