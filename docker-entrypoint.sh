@@ -68,6 +68,10 @@ sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash
 
 # Crear directorios de configuración
 mkdir -p /home/$USER_NAME/.config/girep/
+mkdir -p /data/{cprojects,girep}
+
+lk -s /data/cprojects /home/$USER_NAME/projects
+lk -s /data/girep /home/$USER_NAME/.config/girep/ 
 
 # ------------------------------------------------------------------
 # 3️⃣ Iniciamos sshd en segundo plano
