@@ -78,7 +78,7 @@ else
     sudo -u "$USER_NAME" ln -s /data/girep /home/$USER_NAME/.config/girep
     sudo -u "$USER_NAME" ln -s /data/cprojects /home/$USER_NAME/projects
     
-    sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash
+    sudo -u "$USER_NAME" /home/$USER_NAME/.fx/config.bash -n
 fi
 
 # ------------------------------------------------------------------
